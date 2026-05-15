@@ -1,0 +1,45 @@
+{
+  "name": "docmind",
+  "version": "1.0.0",
+  "description": "DocMind AI文档问答系统 - 上传PDF/TXT → AI摘要 → SSE流式问答",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "nodemon --watch server.js server.js",
+    "server:start": "node server.js",
+    "client:dev": "vite --port 5173",
+    "client:build": "tsc && vite build",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "deploy": "npm run build && pm2 restart docmind || pm2 start server.js --name docmind"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "sqlite3": "^5.1.6",
+    "sqlite": "^5.1.1",
+    "pdf-parse": "^1.1.1",
+    "uuid": "^9.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.4.0",
+    "typescript": "^5.7.0",
+    "vite": "^6.1.0",
+    "tailwindcss": "^3.4.17",
+    "postcss": "^8.4.49",
+    "autoprefixer": "^10.4.20",
+    "nodemon": "^3.0.2",
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

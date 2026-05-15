@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    /* ========== 编译目标与模块系统 ========== */
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    /* ========== 严格模式 ========== */
+    "strict": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+
+    /* ========== 类型声明 ========== */
+    "composite": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    /* ========== 库声明 ========== */
+    "types": ["node"]
+  },
+
+  /* ========== 仅包含Vite配置文件 ========== */
+  "include": ["vite.config.ts"],
+  "exclude": ["node_modules", "dist", "src"]
+}

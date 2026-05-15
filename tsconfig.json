@@ -1,0 +1,53 @@
+{
+  "compilerOptions": {
+    /* ========== 编译目标与模块系统 ========== */
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    /* ========== JSX 配置 ========== */
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+
+    /* ========== 严格模式 ========== */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+
+    /* ========== 类型声明 ========== */
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "declaration": false,
+    "sourceMap": true,
+
+    /* ========== 路径配置 ========== */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@types/*": ["src/types/*"],
+      "@utils/*": ["src/utils/*"]
+    },
+
+    /* ========== 库声明 ========== */
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"]
+  },
+
+  /* ========== 包含的文件 ========== */
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
