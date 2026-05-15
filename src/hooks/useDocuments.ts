@@ -6,7 +6,7 @@
 import { useState, useCallback } from 'react';
 import type { Document, DocumentListItem, UseDocumentsReturn } from '../types';
 
-const API_BASE = '/api';
+const API_BASE = './api';
 const REQUEST_TIMEOUT = 30000;
 
 async function fetchWithTimeout(url: string, options: RequestInit = {}): Promise<Response> {

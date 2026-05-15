@@ -4,14 +4,14 @@
  * 使用低饱和度暖色调（amber/orange/stone/slate）
  */
 
+/* ========== Google Fonts 引入（必须在其他语句之前） ========== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
 /* ========== Tailwind 指令 ========== */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ========== Google Fonts 引入 ========== */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
 
 /* ========== CSS 变量定义（亮色模式） ========== */
 :root {

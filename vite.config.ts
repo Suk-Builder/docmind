@@ -13,6 +13,8 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  /* 基础路径：使用相对路径，支持通过子目录代理访问 */
+  base: './',
   /* ========== 插件配置 ========== */
   plugins: [
     // React 插件：支持 Fast Refresh、JSX 转换、自动引入 React
