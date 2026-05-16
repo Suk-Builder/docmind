@@ -104,3 +104,11 @@ Built by [Ying Momo](https://github.com/Suk-Builder) — Computer Science underg
 ## License
 
 MIT
+
+---
+
+## 与Builder-System的关系
+
+本项目属于Builder-System **域II — AI认知**：AI文档问答系统。FastAPI+React 19，Builder-System文档知识库。
+
+Builder-System（V4.3，104篇文本、35元概念）→ [了解更多](https://github.com/Suk-Builder/Builder-System)
