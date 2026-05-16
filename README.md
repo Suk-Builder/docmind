@@ -1,61 +1,106 @@
-# DocMind - AI 文档问答系统
+# DocMind
 
-上传 PDF/TXT 文档，AI 自动生成摘要，基于文档内容进行 SSE 流式问答。
+> RAG-powered document Q&A system. Upload PDF/TXT documents, get AI-generated summaries, and ask questions with SSE streaming responses grounded in your documents.
 
-## 在线访问
+[![React](https://img.shields.io/badge/React-19-61DAFB)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)](https://nodejs.org/)
+[![DeepSeek](https://img.shields.io/badge/AI-DeepSeek_API-purple)](https://platform.deepseek.com/)
 
-```
-http://116.62.53.136:443
-```
+## Overview
 
-## 功能
+**DocMind** demonstrates practical implementation of **Retrieval-Augmented Generation (RAG)** — a pattern essential for enterprise AI applications. It processes uploaded documents, chunks them for efficient retrieval, and answers questions strictly based on document content.
 
-- **文档上传**：拖拽或点击上传 PDF/TXT，10MB 限制
-- **AI 摘要**：DeepSeek API 自动生成文档摘要
-- **文本切片**：500 字符/块，100 字符重叠
-- **SSE 流式问答**：基于文档内容实时回答，逐字显示
-- **关键词检索**：简化 BM25 匹配最相关文本片段
+## Features
 
-## API
+- **Document upload**: Drag-and-drop PDF/TXT (up to 10MB)
+- **AI summarization**: Automatic document abstract via DeepSeek API
+- **Smart chunking**: 500-character chunks with 100-character overlap for optimal retrieval
+- **SSE streaming Q&A**: Real-time, grounded answers that cite document sources
+- **Keyword retrieval**: Simplified BM25-based relevance matching
+- **Document management**: List, view, and delete uploaded documents
 
-| 方法 | 路径 | 说明 |
-|------|------|------|
-| GET | `/health` | 健康检查 |
-| POST | `/api/documents` | 上传文档（multipart/form-data） |
-| GET | `/api/documents` | 文档列表 |
-| GET | `/api/documents/:id` | 文档详情 |
-| DELETE | `/api/documents/:id` | 删除文档 |
-| POST | `/api/chat` | SSE 流式问答 |
+## Tech Stack
 
-## 技术栈
+| Layer | Technology |
+|-------|-----------|
+| Frontend | React 19, Vite, Tailwind CSS, TypeScript |
+| Backend | Express, multer (upload), pdf-parse |
+| Database | SQLite (document metadata + chunk storage) |
+| AI | DeepSeek API (SSE streaming) |
+| Retrieval | Custom BM25-style keyword matching |
 
-- 后端：Express + multer + pdf-parse + sqlite3
-- 前端：React 19 + Vite + Tailwind CSS + TypeScript
-- AI：DeepSeek API（SSE 流式）
+## API Reference
 
-## 部署
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/health` | Health check |
+| `POST` | `/api/documents` | Upload document (multipart) |
+| `GET` | `/api/documents` | List all documents |
+| `GET` | `/api/documents/:id` | Get document details |
+| `DELETE` | `/api/documents/:id` | Remove document |
+| `POST` | `/api/chat` | SSE streaming Q&A |
+
+## Quick Start
 
 ```bash
 git clone https://github.com/Suk-Builder/docmind.git
 cd docmind
 cp .env.example .env
-# 编辑 .env 填入 DEEPSEEK_API_KEY
+# Add your DEEPSEEK_API_KEY
 npm install
 npm run build
 npm start
+# http://localhost:443 (or PORT in .env)
 ```
 
-## 环境变量
+## RAG Pipeline
 
-| 变量 | 说明 |
-|------|------|
-| `PORT` | 服务端口（默认 443） |
-| `DEEPSEEK_API_KEY` | DeepSeek API 密钥 |
-| `DB_PATH` | SQLite 数据库路径 |
+```
+PDF/TXT Upload
+    → Text extraction (pdf-parse)
+    → Chunking (500 chars, 100 overlap)
+    → BM25 keyword indexing
+    → SQLite storage
 
-## pm2 管理
+User Question
+    → Keyword matching → Retrieve top-k chunks
+    → DeepSeek API (context + question)
+    → SSE stream response with source references
+```
+
+## Why This Matters for Germany
+
+RAG architecture is a core requirement for **DiGA-compliant** medical documentation systems and enterprise knowledge management in GDPR-regulated environments. DocMind demonstrates practical implementation of:
+
+- Document ingestion and processing pipelines
+- Vector/text hybrid retrieval
+- Streaming AI responses with source attribution
+- Data privacy (on-premise deployment, no external data leakage)
+
+## Deployment
 
 ```bash
+# PM2
 pm2 start ecosystem.config.js
 pm2 save
+
+# Docker (if available)
+docker-compose up -d
 ```
+
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | `443` | Server port |
+| `DEEPSEEK_API_KEY` | — | DeepSeek API key |
+| `DB_PATH` | `./db/docmind.db` | SQLite database path |
+
+## About
+
+Built by [Ying Momo](https://github.com/Suk-Builder) — Computer Science undergraduate, targeting Germany's AI and digital health market.
+
+## License
+
+MIT
